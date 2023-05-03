@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="state_country_notfound" model="res.country.state" forcecreate="0">
+            <field name="name">Notfound</field>
+            <field name="code">15</field>
+            <field name="country_id">68</field>
+        </record>
+</odoo>

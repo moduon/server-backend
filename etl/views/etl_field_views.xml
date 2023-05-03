@@ -1,0 +1,53 @@
+<!--  Copyright 2023 Moduon Team S.L. <info@moduon.team>
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).  -->
+<odoo>
+     <record id="action_etl_fields" model="ir.actions.act_window">
+        <field name="name">ETL Fields</field>
+        <field name="res_model">etl.field</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="etl_external_fields_tree" />
+        <field name="context">{'search_default_grp_table': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Setting external fields
+            </p>
+        </field>
+    </record>
+
+     <record id="etl_external_fields_tree" model="ir.ui.view">
+          <field name="name">etl.external.fields.tree</field>
+          <field name="model">etl.field</field>
+          <field name="arch" type="xml">
+               <tree editable="bottom">
+                    <field name="table_id" />
+                    <field name="name" />
+                    <field name="field_type" />
+               </tree>
+          </field>
+     </record>
+
+     <record id="etl_external_fields_search" model="ir.ui.view">
+          <field name="name">etl.external.fields.search</field>
+          <field name="model">etl.field</field>
+          <field name="arch" type="xml">
+               <search>
+                    <field name="name" />
+                    <field name="table_id" />
+                    <field name="field_type" />
+                    <separator />
+                    <group>
+                         <filter
+                        name="grp_table"
+                        string="Table"
+                        context="{'group_by':'table_id'}"
+                    />
+                         <filter
+                        name="grp_field_type"
+                        string="Field Type"
+                        context="{'group_by':'field_type'}"
+                    />
+                    </group>
+               </search>
+          </field>
+     </record>
+</odoo>

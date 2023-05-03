@@ -1,0 +1,84 @@
+<!--  Copyright 2023 Moduon Team S.L. <info@moduon.team>
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).  -->
+<odoo>
+    <record id="action_etl_records_mapped" model="ir.actions.act_window">
+        <field name="name">ETL Records Mapped</field>
+        <field name="res_model">etl.mapping.record.auto</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="etl_records_mapped_tree" />
+        <field name="context">{'search_default_grp_odoo_model': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Setting records mapped
+            </p>
+        </field>
+    </record>
+
+    <record id="etl_records_mapped_tree" model="ir.ui.view">
+        <field name="name">etl.records.mapped.tree</field>
+        <field name="model">etl.mapping.record.auto</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="process_id" />
+                <field name="source_table_id" />
+                <field name="primary_key_id" widget="many2many_tags" />
+                <field name="odoo_model_id" />
+                <field name="odoo_id" />
+                <field name="external_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="etl_records_mapped_form" model="ir.ui.view">
+        <field name="name">etl.records.mapped.form</field>
+        <field name="model">etl.mapping.record.auto</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="process_id" />
+                        <field name="source_table_id" />
+                        <field name="odoo_model_id" />
+                        <field name="odoo_id" />
+                        <field name="external_id" />
+                    </group>
+                    <group>
+                        <field name="primary_key_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="etl_records_mapped_search" model="ir.ui.view">
+        <field name="name">etl.records.mapped.search</field>
+        <field name="model">etl.mapping.record.auto</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="process_id" />
+                <field name="source_table_id" />
+                <field name="odoo_model_id" />
+                <field name="odoo_id" />
+                <field name="external_id" />
+                <separator />
+                <group>
+                    <filter
+                        name="grp_odoo_model"
+                        string="Odoo Model"
+                        context="{'group_by': 'odoo_model_id'}"
+                    />
+                    <filter
+                        name="grp_process"
+                        string="Process"
+                        context="{'group_by': 'process_id'}"
+                    />
+                    <filter
+                        name="grp_source_table"
+                        string="Source Table"
+                        context="{'group_by': 'source_table_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

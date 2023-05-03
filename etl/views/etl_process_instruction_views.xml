@@ -1,0 +1,113 @@
+<!--  Copyright 2023 Moduon Team S.L. <info@moduon.team>
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).  -->
+<odoo>
+    <record id="action_etl_data_mapped" model="ir.actions.act_window">
+        <field name="name">ETL Process instruction</field>
+        <field name="res_model">etl.process.instruction</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="etl_data_mapped_tree" />
+        <field name="context">{'search_default_grp_odoo_model': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Setting process instructions
+            </p>
+        </field>
+    </record>
+
+    <record id="etl_data_mapped_tree" model="ir.ui.view">
+        <field name="name">etl.process.instruction.tree</field>
+        <field name="model">etl.process.instruction</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="process_id" />
+                <field name="source_table_id" />
+                <field name="source_field_id" />
+                <field name="odoo_model_id" />
+                <field name="odoo_field_id" />
+                <field name="transformation" />
+                <field name="related_destination_search_table_id" />
+                <field name="related_destination_field_id" />
+                <field name="related_source_search_table_id" />
+                <field name="related_source_field_id" />
+                <field name="join_external_field_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="etl_data_mapped_form" model="ir.ui.view">
+        <field name="name">etl.process.instruction.form</field>
+        <field name="model">etl.process.instruction</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="process_id" />
+                            <field name="source_table_id" />
+                            <field
+                                name="source_field_id"
+                                domain="[('table_id','=', source_table_id)]"
+                            />
+                            <field name="odoo_model_id" />
+                            <field
+                                name="odoo_field_id"
+                                domain="[('model_id','=', odoo_model_id)]"
+                            />
+                            <field name="transformation" />
+                            <field name="related_destination_search_table_id" />
+                        </group>
+                        <group>
+                            <field name="related_destination_field_id" />
+                            <field name="related_source_search_table_id" />
+                            <field name="related_source_field_id" />
+                            <field
+                                name="join_external_field_id"
+                                domain="[('table_id','=', related_source_search_table_id)]"
+                            />
+                            <field name="multiples_records" />
+                        </group>
+                        <group>
+                            <field name="upgrade_field" />
+                            <field name="other_transformation" />
+                            <field
+                                name="domain"
+                                widget="domain"
+                                options="{'model': 'etl.mapping.record.manual'}"
+                            />
+                            <field name="where_table" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="etl_data_mapped_search" model="ir.ui.view">
+        <field name="name">etl.process.instruction.search</field>
+        <field name="model">etl.process.instruction</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="process_id" />
+                <field name="source_field_id" />
+                <field name="odoo_model_id" />
+                <field name="transformation" />
+                <separator />
+                <group>
+                    <filter
+                        name="grp_process"
+                        string="Process"
+                        domain="[]"
+                        context="{'group_by': 'process_id'}"
+                    />
+
+                    <filter
+                        name="grp_transformation"
+                        string="Transformation"
+                        domain="[]"
+                        context="{'group_by': 'transformation'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,66 @@
+<!--  Copyright 2023 Moduon Team S.L. <info@moduon.team>
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).  -->
+<odoo>
+
+    <record id="action_etl_records_mapped_manual" model="ir.actions.act_window">
+        <field name="name">ETL Records Mapped Manual</field>
+        <field name="res_model">etl.mapping.record.manual</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="etl_records_mapped_manual_tree" />
+        <field name="context">{'search_default_grp_name': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Setting records mapped manual
+            </p>
+        </field>
+    </record>
+
+    <record id="etl_records_mapped_manual_tree" model="ir.ui.view">
+        <field name="name">etl.records.mapped.manual.tree</field>
+        <field name="model">etl.mapping.record.manual</field>
+        <field name="arch" type="xml">
+            <tree editable="top">
+                <field name="name" />
+                <field name="key" />
+                <field name="value" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="etl_records_mapped_manual_form" model="ir.ui.view">
+        <field name="name">etl.records.mapped.manual.form</field>
+        <field name="model">etl.mapping.record.manual</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="key" />
+                        <field name="value" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="etl_records_mapped_manual_search" model="ir.ui.view">
+        <field name="name">etl.records.mapped.manual.search</field>
+        <field name="model">etl.mapping.record.manual</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="key" />
+                <field name="value" />
+                <separator />
+                <group>
+                    <filter
+                        name="grp_name"
+                        string="Name"
+                        domain="[]"
+                        context="{'group_by': 'name'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

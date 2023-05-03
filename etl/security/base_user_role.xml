@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Copyright 2023 Moduon Team S.L. <info@moduon.team>
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).  -->
+<odoo>
+     <record model="ir.model.access" id="base_user_role_etl_process">
+        <field name="name">base.user.role.etl.process</field>
+        <field name="model_id" ref="model_etl_process" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+    <record model="ir.model.access" id="base_user_role_etl_process_instruction">
+        <field name="name">base.user.role.etl.process.instruction</field>
+        <field name="model_id" ref="model_etl_process_instruction" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+     <record model="ir.model.access" id="base_user_role_external_tables">
+        <field name="name">base.user.role.external.tables</field>
+        <field name="model_id" ref="model_etl_table" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+    <record model="ir.model.access" id="base_user_role_external_fields">
+        <field name="name">base.user.role.external.fields</field>
+        <field name="model_id" ref="model_etl_field" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+    <record model="ir.model.access" id="base_user_role_filter_fields">
+        <field name="name">base.user.role.filter.fields</field>
+        <field name="model_id" ref="model_etl_filter_field" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+    <record model="ir.model.access" id="base_user_role_records_mapped">
+        <field name="name">base.user.role.records.mapped</field>
+        <field name="model_id" ref="model_etl_mapping_record_auto" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+     <record model="ir.model.access" id="base_user_role_records_mapped_manual">
+        <field name="name">base.user.role.records.mapped.manual</field>
+        <field name="model_id" ref="model_etl_mapping_record_manual" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+</odoo>

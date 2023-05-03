@@ -1,0 +1,69 @@
+<!--  Copyright 2023 Moduon Team S.L. <info@moduon.team>
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).  -->
+<odoo>
+    <record id="action_etl_process" model="ir.actions.act_window">
+        <field name="name">ETL Process</field>
+        <field name="res_model">etl.process</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="etl_process_tree" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Setting ETL Process
+            </p>
+        </field>
+    </record>
+
+    <record id="etl_process_tree" model="ir.ui.view">
+        <field name="name">etl.process.tree</field>
+        <field name="model">etl.process</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="odoo_model_id" />
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="filter_fields_ids" />
+                <field name="order" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="etl_process_form" model="ir.ui.view">
+        <field name="name">etl.process.form</field>
+        <field name="model">etl.process</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="sincronize_data"
+                        string="Sincronize data"
+                        type="object"
+                        class="oe_highlight mb-3"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="odoo_model_id" />
+                        <field name="related_process_ids" />
+                        <field name="order" />
+                    </group>
+                    <group name="grp_process_instructions" string="Instructions">
+                        <field
+                            name="data_mapped_ids"
+                            widget="one2many"
+                            colspan="2"
+                            nolabel="1"
+                        />
+                    </group>
+                    <group name="grp_filter_where_table" string="Filter table">
+                        <field name="filter_fields_ids" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

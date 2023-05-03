@@ -1,0 +1,54 @@
+<!--  Copyright 2023 Moduon Team S.L. <info@moduon.team>
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).  -->
+<odoo>
+    <menuitem id="menu_etl" name="ETL" sequence="2" />
+    <menuitem
+        id="menu_etl_process"
+        name="ETL Process"
+        parent="menu_etl"
+        action="action_etl_process"
+        sequence="0"
+    />
+    <menuitem
+        id="menu_etl_main"
+        name="External tables"
+        parent="menu_etl"
+        action="action_etl_details"
+        sequence="1"
+    />
+    <menuitem
+        id="menu_etl_main"
+        name="External tables"
+        parent="menu_etl"
+        action="action_etl_details"
+        sequence="1"
+    />
+    <menuitem
+        id="menu_etl_external_fields"
+        name="External fields"
+        parent="menu_etl"
+        action="action_etl_fields"
+        sequence="2"
+    />
+    <menuitem
+        id="menu_etl_data_mapped"
+        name="Process instructions"
+        parent="menu_etl"
+        action="action_etl_data_mapped"
+        sequence="3"
+    />
+    <menuitem
+        id="menu_etl_records_mapped"
+        name="Records created"
+        parent="menu_etl"
+        action="action_etl_records_mapped"
+        sequence="4"
+    />
+    <menuitem
+        id="menu_etl_records_mapped_manual"
+        name="Fields Manual Mapping"
+        parent="menu_etl"
+        action="action_etl_records_mapped_manual"
+        sequence="5"
+    />
+</odoo>
