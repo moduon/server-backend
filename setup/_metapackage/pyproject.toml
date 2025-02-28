@@ -1,8 +1,9 @@
 [project]
 name = "odoo-addons-oca-server-backend"
-version = "18.0.20241127.0"
+version = "18.0.20250228.0"
 dependencies = [
     "odoo-addon-base_user_role==18.0.*",
+    "odoo-addon-base_user_role_company==18.0.*",
 ]
 classifiers=[
     "Programming Language :: Python",
